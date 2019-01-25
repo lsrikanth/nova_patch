@@ -1,0 +1,50 @@
+--- old/nova/db/sqlalchemy/api.py	2019-01-25 14:29:34.170095030 +0530
++++ new/nova/db/sqlalchemy/api.py	2018-01-28 23:08:02.000000000 +0530
+@@ -921,8 +921,9 @@
+ 
+ 
+ @require_context
+-@oslo_db_api.wrap_db_retry(max_retries=5, retry_on_deadlock=True,
+-                           retry_on_request=True)
++#@oslo_db_api.wrap_db_retry(max_retries=5, retry_on_deadlock=True,
++#                           retry_on_request=True)
++@oslo_db_api.wrap_db_retry(max_retries=5, retry_on_deadlock=True)
+ @pick_context_manager_writer
+ def floating_ip_allocate_address(context, project_id, pool,
+                                  auto_assigned=False):
+@@ -1250,8 +1251,9 @@
+ ###################
+ 
+ 
+-@oslo_db_api.wrap_db_retry(max_retries=5, retry_on_deadlock=True,
+-                           retry_on_request=True)
++#@oslo_db_api.wrap_db_retry(max_retries=5, retry_on_deadlock=True,
++#                           retry_on_request=True)
++@oslo_db_api.wrap_db_retry(max_retries=5, retry_on_deadlock=True)
+ @pick_context_manager_writer
+ def fixed_ip_associate(context, address, instance_uuid, network_id=None,
+                        reserved=False, virtual_interface_id=None):
+@@ -1300,8 +1302,9 @@
+     return fixed_ip_ref
+ 
+ 
+-@oslo_db_api.wrap_db_retry(max_retries=5, retry_on_deadlock=True,
+-                           retry_on_request=True)
++#@oslo_db_api.wrap_db_retry(max_retries=5, retry_on_deadlock=True,
++#                           retry_on_request=True)
++@oslo_db_api.wrap_db_retry(max_retries=5, retry_on_deadlock=True)
+ @pick_context_manager_writer
+ def fixed_ip_associate_pool(context, network_id, instance_uuid=None,
+                             host=None, virtual_interface_id=None):
+@@ -3287,8 +3290,9 @@
+     return _network_get_query(context).filter(host_filter).all()
+ 
+ 
+-@oslo_db_api.wrap_db_retry(max_retries=5, retry_on_deadlock=True,
+-                           retry_on_request=True)
++#@oslo_db_api.wrap_db_retry(max_retries=5, retry_on_deadlock=True,
++#                           retry_on_request=True)
++@oslo_db_api.wrap_db_retry(max_retries=5, retry_on_deadlock=True)
+ @pick_context_manager_writer
+ def network_set_host(context, network_id, host_id):
+     network_ref = _network_get_query(context).\
